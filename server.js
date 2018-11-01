@@ -1,39 +1,66 @@
 const express = require('express');
 const sharp = require('sharp');
-const server = express();
-const request = require('request')
+const app = express();
+const request = require('request');
+
+let router = express.Router();
 
 
-server.get('/', (req, res) => {
-  // Extract the query-parameter
-  let {width, height} = req.query;
+// router.get('/:width(\\d+)x:height(\\d+)/:url(.*)', proxyHandler)
+router.get('/:width(\\d+)x:height(\\d+)/*?', (req, res) => {
+  // throw new Error("BROKEN"); // Express will catch this on its own.
 
-  // Parse to integer if possible
+  let {width, height} = req.params;
+  let url = req.params[0];
+
   if (width) {
     width = parseInt(width);
+    if (width === 0) {
+      width = null;
+    }
+    if (width > 1024) {
+      width = 1024;
+    }
   }
 
   if (height) {
     height = parseInt(height);
+    if (height === 0) {
+      height = null;
+    }
+    if (height > 2048) {
+      height = 2048;
+    }
   }
 
   // Set the content-type of the response
   // res.type(`image/${format || 'png'}`); // `image/${format || 'png'}`
 
-
   let transform = sharp();
-
   if (width || height) {
     transform = transform.resize(width, height);
   }
 
   // readStream.pipe(transform).pipe(res);
-  // request.get('https://images-na.ssl-images-amazon.com/images/M/MV5BMTUyMjM2NTgwNl5BMl5BanBnXkFtZTgwMTUzOTUwMjI@._V1_SX1777_CR0,0,1777,999_AL_.jpg')
-  request.get('http://192.168.1.25:9000/abc.jpg')
+  request.get(url)
+    .on('error', err => {
+      res.status(500).send(err.message);
+    })
     .pipe(transform)
+    .on('error', err => {
+      res.status(500).send(err.message);
+    })
     .pipe(res);
 });
 
-server.listen(8000, () => {
+
+app.use('/', router);
+// define error-handling middleware last, after other app.use() and routes calls
+app.use(function (err, req, res, next) {
+  // console.error(err.stack)
+  res.status(500).send('Something broke!');
+});
+
+app.listen(8000, () => {
   console.log('Server started!');
 });
