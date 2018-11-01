@@ -1,3 +1,4 @@
+const config = require('config.json')('./config.json');
 const express = require('express');
 const path = require('path');
 const sharp = require('sharp');
@@ -6,8 +7,6 @@ const request = require('request');
 const uri_normalize = require('./uri_normalize');
 
 let router = express.Router();
-
-const MAX_SIZE = 4194304;
 
 client_error_handler = (err, req, res, next) => {
   if (req.xhr) {
@@ -70,9 +69,12 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', (req, res, next) => {
 
   // readStream.pipe(transform).pipe(res);
   request.get(url)
+    .on('error', function(err) {
+      next(err);
+    })
     .on('response', function(url_res) {
       const size = url_res.headers['content-length'];
-      if (size > MAX_SIZE) {
+      if (size > config.max_size) {
         console.log('Resource size exceeds limit (' + size + ')');
         next(new Error('Resource size exceeds limit (' + size + ')'));
       }

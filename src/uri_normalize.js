@@ -1,7 +1,8 @@
+const config = require('config.json')('./config.json');
 // const { URL } = require('url');
 const normalizeUrl = require('normalize-url');
 
-const BASE_URL = "https://base.com/imageproxy/";
+const BASE_URL = config.base_url;
 
 normalize = (uri_str) => {
   let result_url = uri_str;
