@@ -68,7 +68,7 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', (req, res, next) => {
   }
 
   // readStream.pipe(transform).pipe(res);
-  request.get(url)
+  request.get(url, {timeout: 45000})
     .on('error', function(err) {
       next(err);
     })
