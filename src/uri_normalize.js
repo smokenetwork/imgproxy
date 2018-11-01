@@ -42,4 +42,7 @@ test_normalize = () => {
 };
 
 
-test_normalize();
+// test_normalize();
+
+
+module.exports = normalize;
