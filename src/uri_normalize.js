@@ -31,8 +31,8 @@ normalize = (uri_str) => {
     result_url = null;
   }
 
-  console.log(`before: ${uri_str}`);
-  console.log(`after : ${result_url}`);
+  // console.log(`before: ${uri_str}`);
+  // console.log(`after : ${result_url}`);
 
   return result_url;
 };

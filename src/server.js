@@ -9,6 +9,8 @@ const uri_normalize = require('./uri_normalize');
 let router = express.Router();
 
 request_remote_image = (url) => {
+  console.log(`url : ${url}`);
+
   const options = {
     open_timeout: 15 * 1000,
     response_timeout: 45 * 1000,
@@ -92,8 +94,19 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
     res.set('content-type', 'image/png');
     res.set('Cache-Control', 'public,max-age=600,immutable'); // cache 10 min
     res.sendFile('error.png', { root: path.join(__dirname, '../assets') });
+  } finally {
+    debug_sharp();
   }
 });
+
+debug_sharp = () => {
+  const stats = sharp.cache();
+  const threads = sharp.concurrency();
+  const counters = sharp.counters();
+  const simd = sharp.simd();
+
+  console.log(JSON.stringify({stats, threads, counters, simd}))
+};
 
 app.use('/', router);
 app.listen(8000, () => {
