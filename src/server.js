@@ -79,7 +79,9 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
     let img = img_res.body;
 
     if (width || height) {
-      img = await sharp(img).resize(width, height).toBuffer();
+      img = await sharp(img, {failOnError: true})
+        .resize(width, height)
+        .toBuffer();
     }
 
     //////////
