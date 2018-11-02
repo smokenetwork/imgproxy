@@ -8,6 +8,10 @@ const uri_normalize = require('./uri_normalize');
 
 let router = express.Router();
 
+// http://sharp.dimens.io/en/stable/api-utility/#cache
+sharp.cache(false);
+sharp.concurrency(1);
+
 request_remote_image = (url) => {
   console.log(`url : ${url}`);
 
