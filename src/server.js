@@ -80,7 +80,7 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
     const content_type = img_res.headers["content-type"];
     const accepted_content_types = [ 'image/gif', 'image/jpeg', 'image/png', 'image/webp'];
     if (!accepted_content_types.includes(content_type)) {
-      throw new Error("Unsupported content-type (${content_type})");
+      throw new Error(`Unsupported content-type (${content_type})`);
     }
     res.set('content-type', content_type);
     res.set('Cache-Control', 'public,max-age=29030400,immutable');
