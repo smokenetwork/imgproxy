@@ -13,7 +13,7 @@ sharp.cache(false);
 sharp.concurrency(1);
 
 request_remote_image = (url) => {
-  console.log(`url : ${url}`);
+  console.log(`url: ${url}`);
 
   const options = {
     open_timeout: 15 * 1000,
@@ -101,7 +101,7 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
     res.set('Cache-Control', 'public,max-age=600,immutable'); // cache 10 min
     res.sendFile('error.png', { root: path.join(__dirname, '../assets') });
   } finally {
-    debug_sharp();
+    // debug_sharp();
   }
 });
 
