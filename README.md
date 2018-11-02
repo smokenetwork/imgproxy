@@ -12,5 +12,5 @@
 start with pm2
 
 ```
-pm2 start src/server.js --node-args="--expose_gc --max_semi_space_size=2 --max_old_space_size=256"
+pm2 start src/server.js --max-memory-restart 512M
 ```
