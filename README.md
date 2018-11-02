@@ -6,3 +6,11 @@
 - normalized url
 - bad link image: return image instead of 500 error
 - header cache (max-age)
+
+
+### pm2
+start with pm2
+
+```
+pm2 start src/server.js --node-args="--expose_gc --max_semi_space_size=2 --max_old_space_size=256"
+```
