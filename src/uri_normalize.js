@@ -6,7 +6,9 @@ const BASE_URL = config.base_url;
 
 normalize = (uri_str) => {
   let result_url = uri_str;
-  const opts = {stripWWW: false};
+  const opts = {
+    stripWWW: false
+  };
 
   try {
     if (uri_str.length > 256) {

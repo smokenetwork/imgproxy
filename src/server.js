@@ -5,6 +5,7 @@ const sharp = require('sharp');
 const app = express();
 const needle = require('needle');
 const uri_normalize = require('./uri_normalize');
+const queryString = require('query-string');
 
 let router = express.Router();
 
@@ -60,6 +61,11 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
       }
     }
 
+    // fix to get query string
+    const query_str = queryString.stringify(req.query);
+    if (query_str.length > 0) {
+      url = `${url}?${query_str}`;
+    }
 
     url = uri_normalize(url);
     if (!url) {
