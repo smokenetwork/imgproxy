@@ -14,6 +14,7 @@
     "express": "^4.16.4",
     "needle": "^2.2.4",
     "normalize-url": "^3.3.0",
+    "query-string": "^6.2.0",
     "sharp": "^0.20.8"
   }
 }
