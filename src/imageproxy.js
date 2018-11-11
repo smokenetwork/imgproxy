@@ -24,7 +24,7 @@ request_remote_image = (url) => {
     read_timeout: 60 * 1000,
     compressed: true,
     parse_response: false,
-    // follow_max: 5,
+    follow_max: 1,
   };
 
   return new Promise((resolve, reject) => {
