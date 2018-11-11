@@ -24,18 +24,10 @@ request_remote_image = (url) => {
     read_timeout: 60 * 1000,
     compressed: true,
     parse_response: false,
-    follow_max: 1,
+    // follow_max: 1,
   };
 
-  return new Promise((resolve, reject) => {
-    needle.get(url, options, (error, response) => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve(response)
-      }
-    })
-  })
+  return needle.get(url, options);
 };
 
 router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
@@ -74,8 +66,23 @@ router.get('/:width(\\d+)x:height(\\d+)/*?', async (req, res, next) => {
       throw new Error("invalid url");
     }
 
-    const img_res = await request_remote_image(url);
-    if (img_res.statusCode !== 200) {
+    let img_res = await request_remote_image(url);
+
+    let status_code = Math.floor(img_res.statusCode/100);
+
+    // handle redirecting
+    if (status_code === 3) {
+      url = img_res.headers.location;
+      url = uri_normalize(url);
+      if (!url) {
+        throw new Error("invalid url");
+      }
+
+      img_res = await request_remote_image(url);
+      status_code = Math.floor(img_res.statusCode/100);
+    }
+
+    if (status_code !== 2) {
       throw new Error(`error on remote response (${img_res.statusCode})`);
     }
 
