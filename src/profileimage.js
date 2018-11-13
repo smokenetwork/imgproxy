@@ -121,7 +121,7 @@ router.get('/:accountname/:size?', async function (req, res) {
     }
 
     res.set('content-type', content_type);
-    res.set('Cache-Control', 'public,max-age=29030400,immutable');
+    res.set('Cache-Control', 'public,max-age=86400,immutable');
 
     res.end(img, 'binary');
   } catch (e) {
