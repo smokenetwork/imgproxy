@@ -10,7 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@whaleshares/wlsjs": "^0.1.1",
+    "@smokenetwork/smoke-js": "^0.1.1",
+    "bluebird": "^3.5.3",
     "config.json": "^0.0.4",
     "express": "^4.16.4",
     "needle": "^2.2.4",

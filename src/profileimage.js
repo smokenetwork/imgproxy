@@ -3,12 +3,12 @@ const express = require('express');
 const path = require('path');
 const needle = require('needle');
 const uri_normalize = require('./uri_normalize');
-const chainLib = require('@whaleshares/wlsjs');
+const chainLib = require('@smokenetwork/smoke-js');
 const sharp = require('sharp');
 
-chainLib.api.setOptions({url: 'https://rpc.whaleshares.io'});
-chainLib.config.set('address_prefix', 'WLS');
-chainLib.config.set('chain_id', 'de999ada2ff7ed3d3d580381f229b40b5a0261aec48eb830e540080817b72866');
+chainLib.api.setOptions({url: 'https://rpc.smoke.io'});
+chainLib.config.set('address_prefix', 'SMK');
+chainLib.config.set('chain_id', '1ce08345e61cd3bf91673a47fc507e7ed01550dab841fd9cdb0ab66ef576aaf0');
 
 const accepted_content_types = [ 'image/gif', 'image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
 

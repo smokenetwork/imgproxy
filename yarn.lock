@@ -2,12 +2,11 @@
 # yarn lockfile v1
 
 
-"@whaleshares/wlsjs@^0.1.1":
+"@smokenetwork/smoke-js@^0.1.1":
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/@whaleshares/wlsjs/-/wlsjs-0.1.1.tgz#9c99de61b9ffc33f839c68e8db1963afec7c616b"
+  resolved "https://registry.yarnpkg.com/@smokenetwork/smoke-js/-/smoke-js-0.1.1.tgz#c7dc71efa1cd37df7271c85cd0cf614effcdb056"
   dependencies:
     bigi "^1.4.2"
-    bluebird "^3.4.6"
     browserify-aes "^1.0.6"
     bs58 "^4.0.0"
     buffer "^5.0.6"
@@ -15,12 +14,12 @@
     create-hash "^1.1.2"
     create-hmac "^1.1.4"
     cross-env "^5.0.0"
-    debug "^2.6.8"
+    debug "^2.6.9"
     detect-node "^2.0.3"
     ecurve "^1.0.5"
     fetch-ponyfill "^4.1.0"
-    lodash "^4.16.4"
-    postinstall-build "^5.0.1"
+    lodash "^4.17.11"
+    postinstall-build "^5.0.3"
     secure-random "^1.1.1"
     ws "^3.0.0"
 
@@ -83,7 +82,7 @@ bl@^1.0.0:
     readable-stream "^2.3.5"
     safe-buffer "^5.1.1"
 
-bluebird@^3.4.6:
+bluebird@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/bluebird/-/bluebird-3.5.3.tgz#7d01c6f9616c9a51ab0f8c549a79dfe6ec33efa7"
 
@@ -266,7 +265,7 @@ cross-spawn@^6.0.5:
     shebang-command "^1.2.0"
     which "^1.2.9"
 
-debug@2.6.9, debug@^2.1.2, debug@^2.6.8:
+debug@2.6.9, debug@^2.1.2, debug@^2.6.9:
   version "2.6.9"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.9.tgz#5d128515df134ff327e90a4c93f4e077a536341f"
   dependencies:
@@ -522,7 +521,7 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
 
-lodash@^4.16.4:
+lodash@^4.17.11:
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
 
@@ -704,7 +703,7 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
 
-postinstall-build@^5.0.1:
+postinstall-build@^5.0.3:
   version "5.0.3"
   resolved "https://registry.yarnpkg.com/postinstall-build/-/postinstall-build-5.0.3.tgz#238692f712a481d8f5bc8960e94786036241efc7"
 
